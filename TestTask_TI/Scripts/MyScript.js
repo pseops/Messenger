@@ -46,10 +46,10 @@ function GetMessages(receiverId, senderId) {
         "method": "GET"
     };
 
-    $.ajax(settingsChat).done(function (response) {
-        currentChat = Array.isArray(response) && response[0] ? response[0].Chats_Id : null;
+    $.ajax(settingsChat).done(function (chat) {
+        currentChat = chat.ChatId;
         receiverUser = receiverId;
-        
+        let response = chat.Messages;
         let body = Array.isArray(response) && response[0] ? response.map(function (Message) {
             let color = Message.CreatorId == window.UserId ? colors[0] : colors[1];
             let colorRGB = hexToRgb(color);

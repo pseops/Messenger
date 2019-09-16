@@ -81,23 +81,44 @@ namespace TestTask_TI.Controllers
                 {
                     db.Chats.Add(new Chats { ReceiverId = receiverId, SenderId = senderId });
                     db.SaveChanges();
-                    return Json("", JsonRequestBehavior.AllowGet);
+                    var chat= db.Chats.Where(c => c.ReceiverId == receiverId && c.SenderId == senderId).Select(c=> new {
+                        ChatId= c.Id,                        
+                    }).FirstOrDefault();
+                    return Json(chat, JsonRequestBehavior.AllowGet);
                 }
                 
             }
-            //List<Messages> msg = new List<Messages>();  
             
-            var msg = db.Messages.Where(m => m.Chats_Id == ch.Id).Select(m=>new
+            var msg = db.Messages.Where(m => m.Chats_Id == ch.Id).Select(m => new
             {
-                Id=m.Id,
-                Message=m.Message,
-                CreatorId=m.CreatorId,
-                Name=m.Name,
-                CreatedTime=m.CreatedTime,
-                Chats_Id=m.Chats_Id,
-                Permision = DbFunctions.DiffMinutes(m.CreatedTime, DateTime.UtcNow) < 15
-            }).ToList();            
-            return Json(msg, JsonRequestBehavior.AllowGet);
+                Id = m.Id,
+                Message = m.Message,
+                CreatorId = m.CreatorId,
+                Name = m.Name,
+                CreatedTime = m.CreatedTime,
+                Chats_Id = m.Chats_Id,
+                Permision = DbFunctions.DiffMinutes(m.CreatedTime, DateTime.UtcNow) < 15,
+                
+            }).ToList();
+
+            Chats cht = new Chats();
+
+            cht = db.Chats.Where(c => c.ReceiverId == receiverId && c.SenderId == senderId).FirstOrDefault();
+            if (ch != null)
+            {
+                cht = ch;
+            }
+            var chat2 = new
+            {
+                ChatId = cht.Id,
+                Messages = msg
+            };
+            //var chat2 = db.Chats.Where(c => c.ReceiverId == receiverId && c.SenderId == senderId).Select(c => new {
+            //    ChatId = c.Id,
+            //    Messages = msg,
+            //}).ToList();
+
+            return Json(chat2, JsonRequestBehavior.AllowGet);
         }
         [System.Web.Mvc.Authorize]
         public ActionResult GetUsers()
