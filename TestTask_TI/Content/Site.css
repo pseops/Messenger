@@ -1,0 +1,107 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.main{
+    margin-top: 50px;
+}
+.navbar-inverse.navbar {
+    background-color: #5682a3;
+    border-color: #5682a3;
+}
+.navbar-inverse .navbar-nav > li > a {
+        color: white!important;
+}
+#Messages{
+    height: 500px;
+    border: 1px solid silver;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.contactButton{
+    padding: 10px;
+    background: #eee;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+#inputID {
+    width: 100%;
+    max-width: 100%;
+}
+.message-block {
+    position: relative;
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.Author{
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600
+}
+.message-block.reverse {
+    align-items:flex-end;
+
+}
+.file-input{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.input-group-btn, .input-group{
+    display: flex;
+}
+#handleDelete{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+#handleDelete.reverse {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+#handleEdit{
+    position: absolute;
+    right: 25px;
+    top: 5px;
+    cursor: pointer;
+}
+#handleEdit.reverse {    
+    left: 25px;
+    
+}
+.input-group-btn {
+    width: auto;
+    display: block;
+}
+.hidden{
+    display:none!important;
+}

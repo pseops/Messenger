@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script>window.currentChatUser="@ViewBag.FirstUser.Id"</script>
+
+<div class="row main">
+    <div class="col-md-9 col-xs-9">
+        <div class="col-md-12" id="Messages">
+            
+        </div>
+        <div class="row  col-md-12">
+            <div class="input-group">
+                <input type="text" id="inputID" class="form-control" placeholder="Message">
+                <div class="input-group-btn">
+                    <button class="btn btn-info" id="sendMessage" type="button">Go!</button>
+                    <button type="button" class="btn btn-primary" id="uploadBtn">Upload File!</button>
+                    <input type="file" class="file-input" id="fileInput" name="file" />
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-xs-3">
+        <div class="col-md-12" id="Contacts">
+
+            <p>Contacts</p>
+            @foreach (var item in ViewBag.Users)
+            {
+                <div class="contactButton" id="@item.Id">@item.UserName</div>
+
+            }
+          
+
+        </div>
+    </div>
+</div>
+
